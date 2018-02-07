@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -26,6 +27,7 @@ public class CirclePoint extends LinearLayout {
 
     private int count;
     private ImageView whitePoint;
+    private int mPointMargin;
     public CirclePoint(Context context) {
         super(context);
     }
@@ -69,6 +71,24 @@ public class CirclePoint extends LinearLayout {
             pictureLayout.addView(point);
 
         }
+    }
+
+    public void setPoint(){
+        whitePoint.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                // 此时layout布局已经显示出来了，可以获取小圆点之间的距离了
+                mPointMargin = pictureLayout.getChildAt(1).getLeft() - pictureLayout.getChildAt(0).getLeft();
+                // 将自己移除掉
+                whitePoint.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+            }
+        });
+    }
+    public void setonPageScrolled(int position,float positionOffset, int positionOffsetPixels){
+        int leftMargin = (int) (mPointMargin * (position + positionOffset)); // 页面滑动的时候，动态的获取小圆点的左边距
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) whitePoint.getLayoutParams();// 获取布局参数，然后设置布局参数
+        params.leftMargin = leftMargin; // 修改参数
+        whitePoint.setLayoutParams(params); // 重新设置布局参数
     }
     private void init(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.CirclePoint);
