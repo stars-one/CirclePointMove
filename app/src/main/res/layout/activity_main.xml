@@ -17,6 +17,19 @@
        android:layout_height="wrap_content"
        app:count="6"
        app:size="8dp"
-       />
+       app:point_selected_color="@color/colorAccent"
+     app:point_unselected_color="@color/colorPrimary"
+       >
 
+
+   </com.wan.movecirclepoint.CirclePoint>
+   <Button
+       android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+   <ImageView
+       android:id="@+id/imageView"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:src="@drawable/shape_point_normal"/>
 </LinearLayout>
