@@ -91,7 +91,9 @@ public class CirclePoint extends LinearLayout {
         //将宽高和权重属性赋值给linearlayout
         left.setLayoutParams(layoutParams);
 
-        centerLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+        RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+
+        centerLayout.setLayoutParams(layoutParams1);
         centerLayout.setGravity(Gravity.CENTER_HORIZONTAL);
 
         pictureLayout.setLayoutParams(new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
@@ -107,7 +109,7 @@ public class CirclePoint extends LinearLayout {
 
 
         right= new LinearLayout(context);
-        left.setLayoutParams(layoutParams);
+        right.setLayoutParams(layoutParams);
         //把三个linearlayout添加到当前容器
         addView(left);
         addView(center);
