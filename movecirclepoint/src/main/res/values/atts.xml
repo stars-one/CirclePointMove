@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CirclePoint">
+        <attr name="size" format="dimension"/>
+        <attr name="point_unselected_color" format="color|reference"/>
+        <attr name="point_selected_color" format="color|reference"/>
+
+        <attr name="unselected_drawble" format="reference"/>
+        <attr name="selected_drawble" format="reference"/>
+        <attr name="unselected_drawble_color" format="color|reference"/>
+        <attr name="selected_drawble_color" format="color|reference"/>
+
+        <attr name="count" format="integer"/>
+
+    </declare-styleable>
+</resources>
