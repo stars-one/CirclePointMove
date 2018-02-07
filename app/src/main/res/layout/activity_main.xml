@@ -15,7 +15,8 @@
        android:id="@+id/circlepoint"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       app:count="3"
-       app:size="10dp"/>
+       app:count="6"
+       app:size="8dp"
+       />
 
 </LinearLayout>

@@ -22,7 +22,7 @@ public class CirclePoint extends LinearLayout {
     private int point_unselected_color,point_selected_color,unselected_drawble_color,selected_drawble_color;
     private Drawable unsselected_drawble,selected_drawble;
     private RelativeLayout centerLayout;
-    private LinearLayout left,center,right,pictureLayout;
+    private LinearLayout center,pictureLayout;
     private ViewGroup.LayoutParams LinearLayout;
 
     private int count;
@@ -34,7 +34,7 @@ public class CirclePoint extends LinearLayout {
 
     public CirclePoint(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setOrientation(HORIZONTAL);//设置此Linearlayout为水平放置
+        setOrientation(VERTICAL);
         initLayout(context);
         init(context,attrs);
     }
@@ -93,7 +93,7 @@ public class CirclePoint extends LinearLayout {
     private void init(Context context,AttributeSet attrs){
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.CirclePoint);
 
-        size = typedArray.getDimension(R.styleable.CirclePoint_size,6);
+        size = typedArray.getDimension(R.styleable.CirclePoint_size,8);
 
         point_selected_color = typedArray.getColor(R.styleable.CirclePoint_point_selected_color,0);
         point_unselected_color = typedArray.getColor(R.styleable.CirclePoint_point_unselected_color,0);
@@ -105,11 +105,9 @@ public class CirclePoint extends LinearLayout {
         count = typedArray.getInteger(R.styleable.CirclePoint_count,3);
         typedArray.recycle();
 
-        left= new LinearLayout(context);//创建一个linearlayout
-        //创建一个width为0，height为match_parent,weight为1的LayoutParm（Linearlayout）
-        LayoutParams layoutParams =new LayoutParams(0,ViewGroup.LayoutParams.MATCH_PARENT,1);
-        //将宽高和权重属性赋值给linearlayout
-        left.setLayoutParams(layoutParams);
+
+
+
 
         RelativeLayout.LayoutParams layoutParams1 = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
 
@@ -124,16 +122,15 @@ public class CirclePoint extends LinearLayout {
         centerLayout.addView(whitePoint);
 
         center= new LinearLayout(context);
+        LayoutParams layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.MATCH_PARENT);
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         center.setLayoutParams(layoutParams);
+
         center.addView(centerLayout);//添加RelativeLayout
 
 
-        right= new LinearLayout(context);
-        right.setLayoutParams(layoutParams);
-        //把三个linearlayout添加到当前容器
-        addView(left);
         addView(center);
-        addView(right);
+
     }
 
 }

@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MyViewPagerAdapter extends PagerAdapter {
     @Override
     public int getCount() {
-        return 3;//在Viewpager显示3个页面
+        return 6;//在Viewpager显示3个页面
     }
 
     @Override
