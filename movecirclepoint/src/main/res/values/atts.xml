@@ -11,6 +11,6 @@
         <attr name="selected_drawble_color" format="color|reference"/>
 
         <attr name="count" format="integer"/>
-
+        <attr name="Allow_custom" format="boolean"/>
     </declare-styleable>
 </resources>

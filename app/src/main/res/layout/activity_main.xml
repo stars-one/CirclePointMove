@@ -17,6 +17,7 @@
        android:layout_height="wrap_content"
        app:count="6"
        app:size="8dp"
+      app:Allow_custom="true"
 
       />
 

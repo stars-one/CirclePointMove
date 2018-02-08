@@ -30,8 +30,8 @@ public class CirclePoint extends LinearLayout {
     private int count;
     private ImageView whitePoint;
     private int mPointMargin;
-
-    private GradientDrawable selected_point,unselected_point,selected_picture,unselected_picture;
+    private boolean allowCustom;
+    private GradientDrawable selected_point,unselected_point,selected_picture,unselected_picture,selected,unselected;
     public CirclePoint(Context context) {
         super(context);
     }
@@ -49,7 +49,7 @@ public class CirclePoint extends LinearLayout {
         centerLayout = new RelativeLayout(context);
         pictureLayout = new LinearLayout(context);
         whitePoint = new ImageView(context);
-        whitePoint.setImageDrawable(selected_point);
+
     }
     public CirclePoint(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
@@ -57,7 +57,7 @@ public class CirclePoint extends LinearLayout {
 
 
     public void initImage(int count,Context context){
-
+        whitePoint.setImageDrawable(selected);
         // 设置白点的布局参数
         int pointSize = (int)size;
         //生成一个正方形的RelativeLayout，将ImageView设置为一个固定大小正方形（动态改变ImageView的宽高）
@@ -67,7 +67,7 @@ public class CirclePoint extends LinearLayout {
         for (int i = 0; i < count; i++) {
             // 设置底部小圆点(灰色)
             ImageView point = new ImageView(context);
-            point.setImageDrawable(unselected_point);
+            point.setImageDrawable(unselected);
             // 设置灰色点的布局参数
             LayoutParams params2 = new LayoutParams(pointSize, pointSize);
             if (i > 0) {
@@ -109,6 +109,7 @@ public class CirclePoint extends LinearLayout {
         selected_drawble = typedArray.getDrawable(R.styleable.CirclePoint_selected_drawble);
         unsselected_drawble = typedArray.getDrawable(R.styleable.CirclePoint_unselected_drawble);
         count = typedArray.getInteger(R.styleable.CirclePoint_count,3);
+        allowCustom = typedArray.getBoolean(R.styleable.CirclePoint_Allow_custom,false);
         typedArray.recycle();
 
         setColor();
@@ -130,9 +131,6 @@ public class CirclePoint extends LinearLayout {
         center.addView(centerLayout);//添加RelativeLayout
         addView(center);
 
-
-
-
     }
     private void handlePicture(){
         if(Build.VERSION.SDK_INT<21){
@@ -142,7 +140,8 @@ public class CirclePoint extends LinearLayout {
         }
     }
     private void setColor(){
-
+        selected = new GradientDrawable();
+        unselected = new GradientDrawable();
 
         if (point_selected_color!=0){
             selected_point.setColor(point_selected_color);
@@ -150,7 +149,10 @@ public class CirclePoint extends LinearLayout {
         if(point_unselected_color!=0){
             unselected_point.setColor(point_unselected_color);
         }
-        if(point_selected_color==0 &&point_unselected_color==0){
+        selected = selected_point;
+        unselected = unselected_point;
+
+        if(allowCustom){
 
             if(selected_drawble_color!=0){
                 selected_picture.setColor(selected_drawble_color);
@@ -158,8 +160,8 @@ public class CirclePoint extends LinearLayout {
             if(unselected_drawble_color!=0){
                 unselected_picture.setColor(unselected_drawble_color);
             }
-            selected_point = selected_picture;
-            unselected_point = unselected_picture;
+            selected = selected_picture;
+            unselected = unselected_picture;
         }
 
     }
