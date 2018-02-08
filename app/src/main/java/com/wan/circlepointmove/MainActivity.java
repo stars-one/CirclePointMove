@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+
         mViewpager.setAdapter(new MyViewPagerAdapter());
         mCirclepoint.setPoint();
         mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

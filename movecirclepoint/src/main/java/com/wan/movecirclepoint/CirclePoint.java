@@ -150,12 +150,18 @@ public class CirclePoint extends LinearLayout {
         if(point_unselected_color!=0){
             unselected_point.setColor(point_unselected_color);
         }
-        if(selected_drawble_color!=0){
-            selected_picture.setColor(selected_drawble_color);
+        if(point_selected_color==0 &&point_unselected_color==0){
+
+            if(selected_drawble_color!=0){
+                selected_picture.setColor(selected_drawble_color);
+            }
+            if(unselected_drawble_color!=0){
+                unselected_picture.setColor(unselected_drawble_color);
+            }
+            selected_point = selected_picture;
+            unselected_point = unselected_picture;
         }
-        if(unselected_drawble_color!=0){
-            unselected_picture.setColor(unselected_drawble_color);
-        }
+
     }
     @TargetApi(21)
     private void handlePictureOn(){

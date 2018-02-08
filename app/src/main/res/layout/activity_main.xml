@@ -17,12 +17,11 @@
        android:layout_height="wrap_content"
        app:count="6"
        app:size="8dp"
-       app:point_selected_color="@color/colorAccent"
-     app:point_unselected_color="@color/colorPrimary"
-       >
+
+      />
 
 
-   </com.wan.movecirclepoint.CirclePoint>
+
    <Button
        android:id="@+id/button"
     android:layout_width="wrap_content"
