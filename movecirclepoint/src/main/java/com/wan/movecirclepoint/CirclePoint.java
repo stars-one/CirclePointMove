@@ -78,7 +78,7 @@ public class CirclePoint extends LinearLayout {
         }
     }
 
-    public void setPoint(){
+     private void  setPoint(){
         whitePoint.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -127,6 +127,7 @@ public class CirclePoint extends LinearLayout {
         center.addView(centerLayout);//添加RelativeLayout
         addView(center);
 
+        setPoint();
     }
     private void handlePicture(){
         if(Build.VERSION.SDK_INT<21){
@@ -150,12 +151,9 @@ public class CirclePoint extends LinearLayout {
     private void handlePictureOn(){
             selected_point= (GradientDrawable) getResources().getDrawable(R.drawable.shape_point_selected,null);
             unselected_point = (GradientDrawable)getResources().getDrawable(R.drawable.shape_point_normal,null);
-
-
     }
     private void handlePictureBefore(){
         selected_point= (GradientDrawable) getResources().getDrawable(R.drawable.shape_point_selected);
         unselected_point = (GradientDrawable)getResources().getDrawable(R.drawable.shape_point_normal);
-
     }
 }
