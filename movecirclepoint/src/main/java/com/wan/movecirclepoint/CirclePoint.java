@@ -159,10 +159,10 @@ public class CirclePoint extends LinearLayout {
         if (allowCustom){
             selected = selected_picture;
             unselected = unselected_picture;
+        }else {
+            selected = selected_point;
+            unselected = unselected_point;
         }
-        selected = selected_point;
-        unselected = unselected_point;
-
     }
     @TargetApi(21)
     private void handlePictureOn(){
