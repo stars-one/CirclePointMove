@@ -1,8 +1,5 @@
 package com.wan.circlepointmove;
 
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -57,11 +54,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                if(Build.VERSION.SDK_INT>21){
-                    GradientDrawable drawable = (GradientDrawable)getResources().getDrawable(R.drawable.shape_point_normal,null);
-                    drawable.setColor(Color.BLUE);
-                    mImageView.setImageDrawable(drawable);
-                }
 
                 break;
             default:break;

@@ -3,7 +3,6 @@ package com.wan.movecirclepoint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -22,16 +21,16 @@ import android.widget.RelativeLayout;
 
 public class CirclePoint extends LinearLayout {
     private float size;
-    private int point_unselected_color,point_selected_color,unselected_drawble_color,selected_drawble_color;
-    private Drawable unsselected_drawble,selected_drawble;
+    private int point_unselected_color,point_selected_color;
+    private GradientDrawable selected_point,unselected_point;
     private RelativeLayout centerLayout;
     private LinearLayout center,pictureLayout;
 
     private int count;
     private ImageView whitePoint;
     private int mPointMargin;
-    private boolean allowCustom;
-    private GradientDrawable selected_point,unselected_point,selected_picture,unselected_picture,selected,unselected;
+
+
     public CirclePoint(Context context) {
         super(context);
     }
@@ -57,7 +56,7 @@ public class CirclePoint extends LinearLayout {
 
 
     public void initImage(int count,Context context){
-        whitePoint.setImageDrawable(selected);
+        whitePoint.setImageDrawable(selected_point);
         // 设置白点的布局参数
         int pointSize = (int)size;
         //生成一个正方形的RelativeLayout，将ImageView设置为一个固定大小正方形（动态改变ImageView的宽高）
@@ -67,7 +66,7 @@ public class CirclePoint extends LinearLayout {
         for (int i = 0; i < count; i++) {
             // 设置底部小圆点(灰色)
             ImageView point = new ImageView(context);
-            point.setImageDrawable(unselected);
+            point.setImageDrawable(unselected_point);
             // 设置灰色点的布局参数
             LayoutParams params2 = new LayoutParams(pointSize, pointSize);
             if (i > 0) {
@@ -103,13 +102,10 @@ public class CirclePoint extends LinearLayout {
 
         point_selected_color = typedArray.getColor(R.styleable.CirclePoint_point_selected_color,0);
         point_unselected_color = typedArray.getColor(R.styleable.CirclePoint_point_unselected_color,0);
-        unselected_drawble_color = typedArray.getColor(R.styleable.CirclePoint_unselected_drawble_color,0);
-        selected_drawble_color = typedArray.getColor(R.styleable.CirclePoint_selected_drawble_color,0);
 
-        selected_drawble = typedArray.getDrawable(R.styleable.CirclePoint_selected_drawble);
-        unsselected_drawble = typedArray.getDrawable(R.styleable.CirclePoint_unselected_drawble);
+
         count = typedArray.getInteger(R.styleable.CirclePoint_count,3);
-        allowCustom = typedArray.getBoolean(R.styleable.CirclePoint_Allow_custom,false);
+
         typedArray.recycle();
 
         setColor();
@@ -140,8 +136,6 @@ public class CirclePoint extends LinearLayout {
         }
     }
     private void setColor(){
-        selected = new GradientDrawable();
-        unselected = new GradientDrawable();
 
         if (point_selected_color!=0){
             selected_point.setColor(point_selected_color);
@@ -149,33 +143,19 @@ public class CirclePoint extends LinearLayout {
         if(point_unselected_color!=0){
             unselected_point.setColor(point_unselected_color);
         }
-        if(selected_drawble_color!=0){
-            selected_picture.setColor(selected_drawble_color);
-        }
-        if(unselected_drawble_color!=0){
-            unselected_picture.setColor(unselected_drawble_color);
-        }
 
-        if (allowCustom){
-            selected = selected_picture;
-            unselected = unselected_picture;
-        }else {
-            selected = selected_point;
-            unselected = unselected_point;
-        }
+
     }
     @TargetApi(21)
     private void handlePictureOn(){
             selected_point= (GradientDrawable) getResources().getDrawable(R.drawable.shape_point_selected,null);
             unselected_point = (GradientDrawable)getResources().getDrawable(R.drawable.shape_point_normal,null);
-            selected_picture = (GradientDrawable)selected_drawble;
-            unselected_picture = (GradientDrawable)unsselected_drawble;
+
 
     }
     private void handlePictureBefore(){
         selected_point= (GradientDrawable) getResources().getDrawable(R.drawable.shape_point_selected);
         unselected_point = (GradientDrawable)getResources().getDrawable(R.drawable.shape_point_normal);
-        selected_picture = (GradientDrawable)selected_drawble;
-        unselected_picture = (GradientDrawable)unsselected_drawble;
+
     }
 }

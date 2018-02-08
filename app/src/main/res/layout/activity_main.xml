@@ -17,8 +17,6 @@
        android:layout_height="wrap_content"
        app:count="6"
        app:size="8dp"
-      app:Allow_custom="true"
-
       />
 
 
@@ -31,5 +29,5 @@
        android:id="@+id/imageView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:src="@drawable/shape_point_normal"/>
+       />
 </LinearLayout>
