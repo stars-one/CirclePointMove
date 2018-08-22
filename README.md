@@ -17,7 +17,7 @@ A simple ViewPager indicator.What can it do?Well,it can let the circle point mov
 ```  
   2. Add the dependency
   ```		dependencies {
-	        compile 'com.github.Stars-One:CirclePointMove:v1.1'
+	        implementation 'com.github.Stars-One:CirclePointMove:v1.1'
 	}
 
 ```  
