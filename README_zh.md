@@ -4,16 +4,12 @@ A simple ViewPager indicator.What can it do?Well,it can let the circle point mov
 
 一个简单的Viewpager指示器，它能实现什么？它能使圆点跟随ViewPager移动(兼容Viewpager和Viewpager2)
 
-- [新中文文档](https://github.com/stars-one/CirclePointMove/blob/master/README_zh.md)
-
-- [中文文档](http://www.cnblogs.com/kexing/p/8433289.html)
-
 ## Picture 
 ![]( https://github.com/Stars-One/CirclePointMove/raw/master/app/picture/b.gif)
 
 ## Usage 
   
-1.Add the JitPack repository to your build file
+1.添加Jitpack仓库源
 
 ```	
 allprojects {
@@ -24,15 +20,15 @@ allprojects {
 }
 ```  
 
-2.Add the dependency
+2.添加依赖
 
 ```
 dependencies {
-    implementation 'com.github.Stars-One:CirclePointMove:v1.1'
+    implementation 'com.github.stars-One:CirclePointMove:最新版本'
 }
 ```  
 
-3.Add CirclePointMove to layout xml file
+3.xml布局文件使用CirclePointMove
 ```xml
 <com.wan.movecirclepoint.CirclePoint
         android:id="@+id/circlepoint"
@@ -43,19 +39,20 @@ dependencies {
         app:size="8dp" />
 ```
 
-4. setup the circle point in your viewpaper or viewpaper2
+4. 安装圆点指示器
 
 ```kotlin
 val mCirclepoint = findViewById<View>(R.id.circlepoint) as CirclePoint
 
-//call the extend method of ViewPager or ViewPager which named 'setupCirclePoint'
- mViewpager.setupCirclePoint(mCirclepoint)
+//setupCirclePoint是本库给ViewPager和ViewPager增加的扩展方法,调用传入即可
+mViewpager.setupCirclePoint(mCirclepoint)
 
-//note the second param ,it is the same as the page count of your viewpaper2
-vp2.setupCirclePoint(mCirclepoint2,6)
+//因为vp2如果采用懒加载方式,无法获取正确页面数量,所以需要传递有个数量参数
+//数量和你vp2里面的页面一致即可,示例代码只是随便写的
+vp2.setupCirclePoint(mCirclepoint,6)
 ```
 
-**Old way:**
+**旧版本方法记录:**
 
 ```kotlin
 
@@ -88,10 +85,10 @@ vp2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 
 |property				|description							|default|
 |--						|--										|--		|
-|size					|the size of showing circle point		|8dp	|
-|point_unselected_color	|the color of unselected circle point	|0		|
-|point_selected_color	|the color of selected circle			|0		|
-|cout					|the item of your viewpager				|3		|
+|size					|圆点的大小(宽高)		|8dp	|
+|point_unselected_color	|圆点未选择颜色(默认是黑色)	|0		|
+|point_selected_color	|圆点选择的颜色(默认是白色)		|0		|
+|count					|圆点数量		|3		|
 
 
 
