@@ -1,1 +1,5 @@
-include ':app', ':movecirclepoint'
+
+include ':movecirclepoint'
+
+include ':app'
+rootProject.name = "MoveCirclePoint"
