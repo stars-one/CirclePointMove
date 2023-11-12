@@ -21,14 +21,18 @@
         app:count="6"
         app:size="8dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/imageView"
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_marginTop="10dp"
+        android:id="@+id/vp2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="150dp" />
+
+    <com.wan.movecirclepoint.CirclePoint
+        android:id="@+id/circlepoint2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:point_selected_color="@color/colorAccent"
+        app:point_unselected_color="@color/colorPrimary"
+        app:count="6"
+        app:size="8dp" />
 </LinearLayout>

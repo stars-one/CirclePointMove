@@ -2,7 +2,7 @@
 
 A simple ViewPager indicator.What can it do?Well,it can let the circle point move together with the move of viewpager move.
 
-一个简单的Viewpager指示器，它能实现什么？它能使圆点跟随ViewPager移动
+一个简单的Viewpager指示器，它能实现什么？它能使圆点跟随ViewPager移动(兼容Viewpager和Viewpager2)
 
 [中文文档](http://www.cnblogs.com/kexing/p/8433289.html)
 
