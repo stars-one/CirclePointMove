@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.wan.circlepointmove.MainActivity">
-   <androidx.viewpager.widget.ViewPager
-       android:id="@+id/viewpager"
-       android:layout_width="match_parent"
-       android:layout_height="150dp"/>
-   <com.wan.movecirclepoint.CirclePoint
-       android:id="@+id/circlepoint"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       app:count="6"
-       app:size="8dp"
-      />
 
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
 
+    <com.wan.movecirclepoint.CirclePoint
+        android:id="@+id/circlepoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:point_selected_color="@color/colorAccent"
+        app:point_unselected_color="@color/colorPrimary"
+        app:count="6"
+        app:size="8dp" />
 
-   <Button
-       android:id="@+id/button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-       android:visibility="gone"/>
-   <ImageView
-       android:id="@+id/imageView"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
