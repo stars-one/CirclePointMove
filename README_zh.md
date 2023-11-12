@@ -4,6 +4,8 @@ A simple ViewPager indicator.What can it do?Well,it can let the circle point mov
 
 一个简单的Viewpager指示器，它能实现什么？它能使圆点跟随ViewPager移动(兼容Viewpager和Viewpager2)
 
+<img src="https://jitpack.io/v/stars-one/CirclePointMove.svg" />
+
 ## Picture 
 ![]( https://github.com/Stars-One/CirclePointMove/raw/master/app/picture/b.gif)
 

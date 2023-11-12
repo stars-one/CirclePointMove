@@ -8,6 +8,8 @@ A simple ViewPager indicator.What can it do?Well,it can let the circle point mov
 
 - [中文文档](http://www.cnblogs.com/kexing/p/8433289.html)
 
+<img src="https://jitpack.io/v/stars-one/CirclePointMove.svg" />
+
 ## Picture 
 ![]( https://github.com/Stars-One/CirclePointMove/raw/master/app/picture/b.gif)
 
