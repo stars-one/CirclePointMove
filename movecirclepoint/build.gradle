@@ -29,6 +29,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'androidx.appcompat:appcompat:1.0.0'
+    compile "androidx.viewpager2:viewpager2:1.0.0"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 

@@ -1,6 +1,7 @@
 package com.wan.circlepointmove
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -11,6 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import androidx.viewpager2.widget.ViewPager2
 import com.wan.movecirclepoint.CirclePoint
+import com.wan.movecirclepoint.setupCirclePoint
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,23 +28,13 @@ class MainActivity : AppCompatActivity() {
         initView()
 
         mViewpager.adapter = MyViewPagerAdapter()
-        mViewpager.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                mCirclepoint.setonPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
+        mViewpager.setupCirclePoint(mCirclepoint)
 
-            override fun onPageSelected(position: Int) {}
-            override fun onPageScrollStateChanged(state: Int) {}
-        })
 
         //设置viewpager2的小圆点指示器
         val textList = (0..5).map { "第 $it 页" }
         vp2.adapter = Vp2Adapter(textList)
-        vp2.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                mCirclepoint2.setonPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-        })
+        vp2.setupCirclePoint(mCirclepoint2)
 
     }
 
