@@ -1,6 +1,6 @@
 # CirclePointMove
 
-A simple ViewPager indicator.What can it do?Well,it can let the circle point move together with the move of viewpager move.
+A simple ViewPager indicator.What can it do?Well,it can let the circle point move together with the move of viewpager move(support ViewPaper and ViewPaper2)
 
 一个简单的Viewpager指示器，它能实现什么？它能使圆点跟随ViewPager移动(兼容Viewpager和Viewpager2)
 
@@ -41,45 +41,58 @@ dependencies {
         app:count="6"
         app:size="8dp" />
 ```  
-*Tip:rememebr edit the count*</br>
 
-4.Initialize CirclePointMove throgth findviewbyid method
-  
-```java
-mCirclepoint = (CirclePoint) findViewById(R.id.circlepoint);
-```  
+> **Tip:rememebr edit the count**
 
-5.Add an OnPageerListener for the ViewPager which you want to show
+4. setup the circle point in your viewpaper or viewpaper2
 
-6.Use the setonPageScrolled of CirclePointMove in the onPageScrolled method of ViewPager
-  
-```java
-mViewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        mCirclepoint.setonPageScrolled(position, positionOffset, positionOffsetPixels);
-    }
 
-    @Override
-    public void onPageSelected(int position) {
+```kotlin
+val mCirclepoint = findViewById<View>(R.id.circlepoint) as CirclePoint
 
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
-});
+//call the extend method of ViewPager or ViewPager which named 'setupCirclePoint'
+ mViewpager.setupCirclePoint(mCirclepoint)
+ 
+ vp2.setupCirclePoint(mCirclepoint2)
 ```
-  
-## Other
 
-|property|description|default|
-|--	|--	|--	|
-|size|the size of showing circle point|8dp|
-|point_unselected_color|the color of unselected circle point|0|
-|point_selected_color|the color of selected circle|0|
-|cout|the item of your viewpager|3|
+**Old way:**
+
+```kotlin
+
+//Old way For ViewPager
+val mCirclepoint = findViewById<View>(R.id.circlepoint) as CirclePoint
+
+mViewpager.addOnPageChangeListener(object : OnPageChangeListener {
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        //note this
+        mCirclepoint.setonPageScrolled(position, positionOffset, positionOffsetPixels)
+    }
+
+    override fun onPageSelected(position: Int) {}
+    override fun onPageScrollStateChanged(state: Int) {}
+})
+
+
+//Old way For ViewPager2:
+val mCirclepoint = findViewById<View>(R.id.circlepoint) as CirclePoint
+
+vp2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        //note this
+        mCirclepoint.setonPageScrolled(position, positionOffset, positionOffsetPixels)
+    }
+})
+```
+
+## view properties
+
+|property				|description							|default|
+|--						|--										|--		|
+|size					|the size of showing circle point		|8dp	|
+|point_unselected_color	|the color of unselected circle point	|0		|
+|point_selected_color	|the color of selected circle			|0		|
+|cout					|the item of your viewpager				|3		|
 
 
 
