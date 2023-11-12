@@ -20,28 +20,28 @@ class CirclePoint : LinearLayout {
     private var size = 0f
     private var point_unselected_color = 0
     private var point_selected_color = 0
-    private var selected_point: GradientDrawable? = null
-    private var unselected_point: GradientDrawable? = null
-    private var centerLayout: RelativeLayout? = null
-    private var center: LinearLayout? = null
-    private var pictureLayout: LinearLayout? = null
+
+    private lateinit var selected_point: GradientDrawable
+    private lateinit var unselected_point: GradientDrawable
+
+
+    private val centerLayout by lazy { RelativeLayout(context) }
+    private val center by lazy { LinearLayout(context) }
+    private val pictureLayout by lazy { LinearLayout(context) }
+
     private var count = 0
-    private var whitePoint: ImageView? = null
+    private val whitePoint by lazy { ImageView(context) }
     private var mPointMargin = 0
 
     constructor(context: Context?) : super(context) {}
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         orientation = VERTICAL
         handlePicture()
-        initLayout(context)
-        init(context, attrs)
+
+        readStylePro(attrs)
+        init(context)
     }
 
-    fun initLayout(context: Context?) {
-        centerLayout = RelativeLayout(context)
-        pictureLayout = LinearLayout(context)
-        whitePoint = ImageView(context)
-    }
 
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {}
 
@@ -66,6 +66,21 @@ class CirclePoint : LinearLayout {
         }
     }
 
+    /**
+     * 设置圆点数量
+     */
+    fun setCount(count: Int) {
+        pictureLayout.removeAllViews()
+        centerLayout.removeAllViews()
+        center.removeAllViews()
+
+        removeAllViews()
+
+        this.count = count
+        init(context)
+    }
+
+
     private fun setPoint() {
         whitePoint!!.viewTreeObserver.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -84,22 +99,27 @@ class CirclePoint : LinearLayout {
         whitePoint!!.layoutParams = params // 重新设置布局参数
     }
 
-    private fun init(context: Context, attrs: AttributeSet?) {
+    private fun readStylePro(attrs: AttributeSet?) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CirclePoint)
         size = typedArray.getDimension(R.styleable.CirclePoint_size, 8f)
         point_selected_color = typedArray.getColor(R.styleable.CirclePoint_point_selected_color, 0)
         point_unselected_color = typedArray.getColor(R.styleable.CirclePoint_point_unselected_color, 0)
         count = typedArray.getInteger(R.styleable.CirclePoint_count, 3)
         typedArray.recycle()
+    }
+
+    private fun init(context: Context) {
         setColor()
+
         centerLayout!!.layoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
         centerLayout!!.gravity = Gravity.CENTER_HORIZONTAL
         pictureLayout!!.layoutParams = LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         pictureLayout!!.orientation = HORIZONTAL
         initImage(count, context) //初始化圆点的图片
+
         centerLayout!!.addView(pictureLayout)
         centerLayout!!.addView(whitePoint)
-        center = LinearLayout(context)
+
         val layoutParams = LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT)
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL
         center!!.layoutParams = layoutParams

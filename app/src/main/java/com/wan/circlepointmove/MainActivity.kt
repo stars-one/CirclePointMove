@@ -34,7 +34,8 @@ class MainActivity : AppCompatActivity() {
         //设置viewpager2的小圆点指示器
         val textList = (0..5).map { "第 $it 页" }
         vp2.adapter = Vp2Adapter(textList)
-        vp2.setupCirclePoint(mCirclepoint2)
+        //因为vp2如果采用懒加载方式,无法获取正确页面数量,所以需要传递有个数量参数
+        vp2.setupCirclePoint(mCirclepoint2,textList.size)
 
     }
 

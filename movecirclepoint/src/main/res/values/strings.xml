@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MoveCirclePoint</string>
+    <string name="install_failed_tip_vp">setupCirclePoint failed: there is no page in viewpaper</string>
+    <string name="install_failed_tip_vp2">setupCirclePoint failed: there is no page in viewpaper2</string>
 </resources>

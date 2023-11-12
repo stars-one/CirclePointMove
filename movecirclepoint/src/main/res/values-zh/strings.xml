@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoveCirclePoint</string>
+    <string name="install_failed_tip_vp">setupCirclePoint failed: viewpaper的页面数量为0</string>
+    <string name="install_failed_tip_vp2">setupCirclePoint failed: viewpaper2的页面数量为0</string>
+</resources>
