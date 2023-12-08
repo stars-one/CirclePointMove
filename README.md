@@ -30,7 +30,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.Stars-One:CirclePointMove:v1.1'
+    implementation 'com.github.Stars-One:CirclePointMove:2.1'
 }
 ```  
 
